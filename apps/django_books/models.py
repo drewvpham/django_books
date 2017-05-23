@@ -8,11 +8,14 @@ class Author(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+
 class Book(models.Model):
     title = models.CharField(max_length=38)
     published_date=models.DateTimeField()
     category = models.CharField(max_length=100)
     in_print = models.BooleanField(default=True)
-    author = models.OneToOneField(Author, related_name='your_book')
+    authors = models.ManyToManyField(Author)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+    
